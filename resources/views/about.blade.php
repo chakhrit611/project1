@@ -8,6 +8,6 @@
 </head>
 <body>
     <a href="/about">about</a> |<a href="/contact">contact</a> | <a href="/welcome">index</a><br>
-    <h1>รักนะ</h1>
+    <h1>รักนะabout</h1>
 </body>
 </html>
