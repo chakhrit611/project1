@@ -7,7 +7,7 @@
     <title>Document</title>
 </head>
 <body>
-    <a href="/about">about</a> |<a href="/contact">contact</a> | <a href="/welcome">index</a><br>
+    <a href="/about">about</a> |<a href="/contact">contact</a> | <a href="/welcome">index</a> | <a href="/category">category</a><br>
 @yield("content")
     <hr>
     &copy; 2021 chakhrit
