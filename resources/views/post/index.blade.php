@@ -1,7 +1,9 @@
 @extends('layout.master')
 @section('content')
+
 <h1>ข่าว</h1>
 <a href="/post/create">+ เพิ่มข่าวใหม่</a>
+
 <table>
     <thead>
         <tr>
@@ -21,9 +23,6 @@
             <td>{{$item->thumnail}}</td>
             <td>{{$item->category_id}}</td>
             <td>{{$item->user_id}}</td>
-            <td><img src="{{$item->thumnail}}"></td>
-            <td>{{$item->category->name}}</td>
-            <td>{{$item->user->name}}</td>
             <td>{{$item->created_at}}</td>
             <td> <a href="/post/edit/{{$item->id}}">แก้ไข</a></td><td>|</td>
             <td> <a href="/post/delete/{{$item->id}}">ลบ</a></td>
@@ -31,4 +30,6 @@
         @endforeach
     </tbody>
 </table>
+
+
 @endsection

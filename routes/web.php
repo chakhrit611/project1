@@ -19,7 +19,7 @@ Route::post('/category/update/{id}', [CategoryController::class, 'update']);
 Route::get('/category/delete/{id}', [CategoryController::class, 'delete']);
 
 Route::get('/user', [UserController::class, 'index']);
-Route::get('/user/create', [UserController::class, 'create']);
+Route::get('/user/create', [UserController::class, 'create'])->middleware('auth');
 Route::post('/user/store', [UserController::class, 'store']);
 Route::get('/user/edit/{id}', [UserController::class, 'edit']); //รับค่าID{ID}
 Route::post('/user/update/{id}', [UserController::class, 'update']);
@@ -32,7 +32,8 @@ Route::post('/post/store', [PostController::class, 'store']);
 Route::get('/post/edit/{id}', [PostController::class, 'edit']); //รับค่าID{ID}
 Route::post('/post/update/{id}', [PostController::class, 'update']);
 
-Route::get('/auth/login', [AuthController::class, 'login']);
-Route::post('/auth/dologin', [AuthController::class, 'doLogin']);
+Route::get('/auth/login', [AuthController::class, 'login'])->name("login");
+Route::post('/auth/doLogin', [AuthController::class, 'doLogin']);
 Route::get('/auth/register', [AuthController::class, 'register']);
-Route::post('/auth/diRegister', [AuthController::class, 'doRegister']);
+Route::post('/auth/doRegister', [AuthController::class, 'doRegister']);
+Route::get('/auth/logout', [AuthController::class, 'logout']);
