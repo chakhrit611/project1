@@ -2,53 +2,64 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Category;
+use App\Models\user;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 
-class CategoryController extends Controller
+class UserController extends Controller
 {
     public function index()
     {
         $data = [
-            'categories' => Category::all(),
+            'users' => User::all(),
         ];
-        return view('category.index', $data);
+        return view('user.index', $data);
     }
     public function create()
     {
-        return view('category.create');
+        return view('user.create');
     }
     public function edit($id)
     {
-        $category = Category::find($id);
+        $user = User::find($id);
         $data = [
-            'category' => $category
+            'user' => $user
         ];
-        return view('category.edit', $data);
+        return view('user.edit', $data);
     }
     public function store(request $request)
     {
         $name = $request->input('name');
-        $category = new Category();
-        $category->name = $name;
-        $category->save();
-        //insert into category value (')
-        return redirect('/category'); //เปลี่ยนหน้าไป
+        $username = $request->input('username');
+        $email = $request->input('email');
+        $password = $request->input('password');
+        $user = new User();
+        $user->name = $name;
+        $user->username = $username;
+        $user->email = $email;
+        $user->password = Hash::make($password);
+        $user->save();
+        return redirect('/user'); //เปลี่ยนหน้าไป
     }
-    public function update(request $request, $id)//รับID
+    public function update(request $request, $id) //รับID
     {
         $name = $request->input('name');
-        //updata category set
-        $category =  Category::find($id);
-        $category->name = $name;
-        $category->save();
-        //insert into category value (')
-        return redirect('/category'); //เปลี่ยนหน้าไป
+        $username = $request->input('username');
+        $email = $request->input('email');
+        $password = $request->input('password');
+
+        $user = User::find($id);
+        $user->name = $name;
+        $user->username = $username;
+        $user->email = $email;
+        $user->password = Hash::make($password);
+        $user->save();
+        return redirect('/user'); //เปลี่ยนหน้าไป
     }
     public function delete($id)
     {
-        $category = Category::find($id);
-        $category->delete();
-        return redirect('/category');
+        $user = User::find($id);
+        $user->delete();
+        return redirect('/user');
     }
 }

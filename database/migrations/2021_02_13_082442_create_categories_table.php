@@ -16,7 +16,7 @@ class CreateCategoriesTable extends Migration
         Schema::create('categories', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->timestamps();//ใช้ในการแสดงเวลาที่แก้ไขและอัพเดต//
+            $table->timestamps('created_at');//ใช้ในการแสดงเวลาที่แก้ไขและอัพเดต//
         });
     }
 
